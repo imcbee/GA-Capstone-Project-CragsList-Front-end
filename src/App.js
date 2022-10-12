@@ -25,6 +25,7 @@ function App() {
           <Route path="/journal/new" element={<JournalEdit />}></Route>
           <Route path="/journal" element={<JournalIndex />}></Route>
           <Route path="/journal/:id" element={<JournalShow />}></Route>
+          <Route path="/journal/:id/edit" element={<JournalEdit />}></Route>
         </Routes>
       </Context.Provider>
     </div>

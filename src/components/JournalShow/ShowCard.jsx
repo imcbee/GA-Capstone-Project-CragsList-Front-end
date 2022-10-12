@@ -1,17 +1,16 @@
 import "./ShowCard.css";
 import { Context } from "../../context/Context";
-import { useContext } from "react";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const ShowCard = ({ showData }) => {
-  console.log(showData);
   //!  ------------------------useContext------------------------
   const { DB_URL } = useContext(Context);
 
   //!  ------------------------useNavigate------------------------
   const navigate = useNavigate();
 
-  //!  ------------------------Delete------------------------
+  //!  ------------------------Delete Journal------------------------
   const handleDelete = async (e) => {
     try {
       const options = {
@@ -63,9 +62,13 @@ const ShowCard = ({ showData }) => {
               {showData.date}
             </p>
             <div className="buttons">
-              <a href="#" className="btn btn-primary">
+              <Link
+                key={showData._id}
+                to={`/journal/${showData._id}/edit`}
+                className="btn btn-primary"
+              >
                 Edit
-              </a>
+              </Link>
               <button onClick={handleDelete} className="btn btn-danger">
                 Delete
               </button>
