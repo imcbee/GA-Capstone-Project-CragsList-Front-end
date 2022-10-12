@@ -1,0 +1,16 @@
+.card {
+  width: 30em;
+  margin: 1em 1em 1em 10em;
+}
+.card-title {
+  font-size: 2rem;
+}
+.strong {
+  color: steelblue;
+}
+.index-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
