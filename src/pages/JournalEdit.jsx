@@ -3,11 +3,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Context } from "../context/Context";
 import { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 const JournalEdit = () => {
   //!  ------------------------useContext------------------------
   const { DB_URL } = useContext(Context);
+
+  //!  ------------------------useNavigate------------------------
+  const navigate = useNavigate();
   //!  ------------------------useParams---------------------------
   const { id } = useParams();
 
@@ -16,8 +19,9 @@ const JournalEdit = () => {
 
   const getShowData = async () => {
     try {
-      const response = await fetch(`${DB_URL}/journal${id}`);
-      const data = response.json();
+      const response = await fetch(`${DB_URL}/journal/${id}`);
+      const data = await response.json();
+      console.log(data);
       setShowData(data);
     } catch (error) {
       console.log(error);
@@ -49,7 +53,13 @@ const JournalEdit = () => {
         body: JSON.stringify(showData),
       };
 
-      await fetch(`${DB_URL}/journal/${showData._id}/edit`, options);
+      const response = await fetch(
+        `${DB_URL}/journal/${showData._id}`,
+        options
+      );
+      const data = await response.json();
+      setShowData(data);
+      navigate(`/journal/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -115,7 +125,7 @@ const JournalEdit = () => {
       </div>
     );
   };
-  //todo  ------------------------Edit Page------------------------
+  //todo  ------------------------JournalEdit------------------------
   return (
     <>
       <Navbar />

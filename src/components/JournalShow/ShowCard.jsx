@@ -20,6 +20,7 @@ const ShowCard = ({ showData }) => {
         `${DB_URL}/journal/${showData._id}`,
         options
       );
+      console.log(response);
       const deleteJournal = await response.json();
       navigate("/journal");
     } catch (error) {
@@ -27,6 +28,7 @@ const ShowCard = ({ showData }) => {
     }
   };
 
+  //todo -----------------------------ShowCard-----------------------------
   return (
     <>
       {showData ? (
@@ -69,7 +71,7 @@ const ShowCard = ({ showData }) => {
               >
                 Edit
               </Link>
-              <button onClick={handleDelete} className="btn btn-danger">
+              <button onClick={() => handleDelete()} className="btn btn-danger">
                 Delete
               </button>
             </div>

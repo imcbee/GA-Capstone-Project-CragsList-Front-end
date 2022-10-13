@@ -22,7 +22,7 @@ const JournalIndex = () => {
   useEffect(() => {
     getIndexData();
   }, []);
-
+  //todo ------------------------JournalIndex-------------------------
   return (
     <div className="index-page">
       <Navbar />

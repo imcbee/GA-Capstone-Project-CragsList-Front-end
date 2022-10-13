@@ -37,6 +37,16 @@ const Navbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
+                <Link className="nav-link" href="/user/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" href="/user/register">
+                  Register
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link
                   className="nav-link active"
                   aria-current="page"
@@ -55,59 +65,7 @@ const Navbar = () => {
                   Link
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="#">
-                  Link
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="#">
-                  Link
-                </Link>
-              </li>
-              {/* <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li> */}
             </ul>
-            {/* <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-success" type="submit">
-                Search
-              </button>
-            </form> */}
           </div>
         </div>
       </div>

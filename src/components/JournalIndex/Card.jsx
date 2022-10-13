@@ -1,8 +1,8 @@
 import "./Card.css";
 import { Link } from "react-router-dom";
 
+//todo -----------------------------IndexCard-----------------------------
 const Card = ({ indexData }) => {
-  console.log(indexData);
   return (
     <>
       {indexData
@@ -32,7 +32,11 @@ const Card = ({ indexData }) => {
                   <p className="card-text">
                     <strong className="strong">Tips:</strong> {data.tips}
                   </p>
-                  <Link to={`/journal/${data._id}`} key={data._id} className="btn btn-primary">
+                  <Link
+                    to={`/journal/${data._id}`}
+                    key={data._id}
+                    className="btn btn-primary"
+                  >
                     See page
                   </Link>
                 </div>
