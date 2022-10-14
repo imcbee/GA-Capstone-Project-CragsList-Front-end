@@ -1,3 +1,9 @@
 .strong {
   color: rgb(96, 206, 179);
 }
+
+#comment-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

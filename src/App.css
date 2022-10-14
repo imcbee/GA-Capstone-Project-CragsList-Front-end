@@ -1,5 +1,5 @@
 .App {
-  width: 99vw;
+  width: 100vw;
   height: 100vh;
 }
 body {
@@ -11,4 +11,10 @@ body {
   position: absolute;
   bottom: 0;
   width: 100vw;
+}
+
+nav {
+  width: 100vw;
+  position: absolute;
+  top: 0;
 }

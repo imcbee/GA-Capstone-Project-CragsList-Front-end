@@ -1,6 +1,6 @@
 const CommentCreate = () => {
   <>
-    <h1>CommentCreate</h1>
+    <h1>You Don't need this!</h1>
   </>;
 };
 

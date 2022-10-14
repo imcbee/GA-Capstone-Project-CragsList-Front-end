@@ -1,12 +1,15 @@
 import "./Comments.css";
 import { Context } from "../../context/Context";
 import { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Comments = ({ showData, getShowData }) => {
   console.log(showData);
   //! ------------------------useContext-------------------------------
   const { DB_URL } = useContext(Context);
+
+  //! ------------------------useNavigate-------------------------------
+  const navigate = useNavigate();
 
   //! --------------------------useState----------------------------
   const [commentData, setCommentData] = useState(null);
@@ -75,11 +78,11 @@ const Comments = ({ showData, getShowData }) => {
         </form>
       </div>
 
-      {showData
-        ? showData.comments.map((data, idx) => {
-            return (
-              <div className="container-fluid">
-                <Link to="#">
+      <div className="container-fluid" id="comment-container">
+        {showData
+          ? showData.comments.map((data, idx) => {
+              return (
+                <Link to={`/comments/${data._id}`} key={data._id}>
                   <div className="card">
                     <div className="card-content">
                       <div className="content" id="comment">
@@ -96,10 +99,10 @@ const Comments = ({ showData, getShowData }) => {
                     </div>
                   </div>
                 </Link>
-              </div>
-            );
-          })
-        : null}
+              );
+            })
+          : null}
+      </div>
     </>
   );
 };

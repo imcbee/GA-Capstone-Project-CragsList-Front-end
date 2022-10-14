@@ -1,8 +1,14 @@
 .show-page {
-  /* width: 100vw;
-  height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+#comment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
 }

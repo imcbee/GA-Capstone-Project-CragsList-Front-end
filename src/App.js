@@ -8,6 +8,7 @@ import JournalShow from "./pages/JournalShow";
 import UserRegister from "./pages/UserRegister";
 import UserLogin from "./pages/UserLogin";
 import CommentCreate from "./pages/CommentCreate";
+import CommentEditandDelete from "./pages/CommentEditandDelete";
 import { Context } from "./context/Context";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -96,7 +97,10 @@ function App() {
           <Route path="/journal" element={<JournalIndex />}></Route>
           <Route path="/journal/:id" element={<JournalShow />}></Route>
           <Route path="/journal/:id/edit" element={<JournalEdit />}></Route>
-          {/* <Route path="/comments/:id/" element={}></Route> */}
+          <Route
+            path="/comments/:id/"
+            element={<CommentEditandDelete />}
+          ></Route>
           {/* <Route path="/comments/:id/" element={}></Route> */}
           <Route path="/user/login" element={<UserLogin />}></Route>
           <Route path="/user/register" element={<UserRegister />}></Route>
