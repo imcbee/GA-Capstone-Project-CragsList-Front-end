@@ -1,5 +1,7 @@
+import "./styles/JournalShow.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Comments from "../components/Home/Comments";
 import { Context } from "../context/Context";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
@@ -15,6 +17,7 @@ const JournalShow = () => {
   const getShowData = async () => {
     const response = await fetch(`${DB_URL}/journal/${id}`);
     const data = await response.json();
+    console.log(data);
     setShowData(data);
   };
 
@@ -31,7 +34,14 @@ const JournalShow = () => {
   return (
     <div className="show-page">
       <Navbar />
-      <ShowCard showData={showData} />
+      {showData ? (
+        <>
+          <ShowCard showData={showData} />
+          <Comments showData={showData} getShowData={getShowData} />
+        </>
+      ) : (
+        <h1>loading...</h1>
+      )}
       <Footer />
     </div>
   );

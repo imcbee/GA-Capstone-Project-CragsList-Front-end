@@ -1,0 +1,14 @@
+.App {
+  width: 99vw;
+  height: 100vh;
+}
+body {
+  background-image: url("https://www.gdargaud.net/Photo/1920/BW_Priest.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+}

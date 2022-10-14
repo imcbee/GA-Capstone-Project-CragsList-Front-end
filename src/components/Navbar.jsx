@@ -37,26 +37,22 @@ const Navbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <Link className="nav-link" href="/user/login">
+                <Link className="nav-link" to="/user/login">
                   Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/user/register">
+                <Link className="nav-link" to="/user/register">
                   Register
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to="/journal"
-                >
+                <Link className="nav-link active" to="/journal">
                   Journals
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/journal/new">
+                <Link className="nav-link" to="/journal/new">
                   Create Journal
                 </Link>
               </li>

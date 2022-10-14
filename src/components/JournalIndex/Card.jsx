@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //todo -----------------------------IndexCard-----------------------------
 const Card = ({ indexData }) => {
   return (
-    <>
+    <div className="window">
       {indexData
         ? indexData.map((data, idx) => {
             return (
@@ -44,7 +44,7 @@ const Card = ({ indexData }) => {
             );
           })
         : null}
-    </>
+    </div>
   );
 };
 
