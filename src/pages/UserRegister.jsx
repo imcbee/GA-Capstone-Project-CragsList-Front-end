@@ -1,3 +1,4 @@
+import "./styles/UserRegister.css";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../context/Context";
 import { useState, useContext } from "react";
@@ -55,10 +56,10 @@ const UserRegister = () => {
     <div className="register-page">
       <Navbar />
       <div className="register-form">
-        <h1>User Registration</h1>
+        <h1 className="title is-1">User Registration</h1>
         <form onSubmit={handleSubmit}>
           <label>
-            <span>Username: </span>
+            <span className="tag is-black">Username: </span>
             <input
               type="text"
               required
@@ -69,7 +70,7 @@ const UserRegister = () => {
             />
           </label>
           <label>
-            <span>Email: </span>
+            <span className="tag is-black">Email: </span>
             <input
               type="text"
               required
@@ -80,7 +81,7 @@ const UserRegister = () => {
             />
           </label>
           <label>
-            <span>Password: </span>
+            <span className="tag is-black">Password: </span>
             <input
               type="text"
               required
@@ -91,7 +92,7 @@ const UserRegister = () => {
             />
           </label>
           <label>
-            <span>Avatar: </span>
+            <span className="tag is-black">Avatar: </span>
             <input
               type="text"
               required

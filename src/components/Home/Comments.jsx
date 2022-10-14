@@ -61,7 +61,7 @@ const Comments = ({ showData, getShowData }) => {
 
   //todo -----------------------------Comments-----------------------------
   return (
-    <>
+    <div className="comments-window">
       {currentUser ? (
         <div className="comment-form">
           <form onSubmit={CreateComment}>
@@ -84,7 +84,7 @@ const Comments = ({ showData, getShowData }) => {
         <></>
       )}
 
-      <div className="container-fluid" id="comment-container">
+      <div id="comment-container">
         {showData
           ? showData.comments.map((data, idx) => {
               return (
@@ -109,7 +109,7 @@ const Comments = ({ showData, getShowData }) => {
             })
           : null}
       </div>
-    </>
+    </div>
   );
 };
 

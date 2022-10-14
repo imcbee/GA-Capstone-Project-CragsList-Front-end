@@ -16,7 +16,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { getUserToken, clearUserToken, setUserToken } from "./utils/authToken";
 
 //! ------------------------Backend FETCH URL------------------------
-const DB_URL = "http://localhost:4000";
+const DB_URL = "https://ga-capstone-cragslist.herokuapp.com/";
 
 function App() {
   //! ----------------------useState for Auth------------------------

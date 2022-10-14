@@ -47,12 +47,19 @@ const Navbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               {currentUser ? (
-                <p>
-                  Hello!{" "}
-                  <span className="tag is-primary is-large">
-                    {currentUser?.username}
-                  </span>
-                </p>
+                <div className="login-status">
+                  <p>
+                    Hello!{" "}
+                    <span className="tag is-primary is-large">
+                      {currentUser?.username}
+                    </span>
+                  </p>
+                  <img
+                    className="image is-48x48"
+                    src={currentUser?.avatar}
+                    alt=""
+                  />
+                </div>
               ) : (
                 <></>
               )}

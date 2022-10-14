@@ -1,3 +1,4 @@
+import "./styles/UserLogin.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
@@ -39,12 +40,11 @@ const UserLogin = () => {
   return (
     <>
       <Navbar />
-      <h1>UserLogin</h1>
       <div className="login-form">
-        <h1>User Registration</h1>
+        <h1 className="title is-1">User Login</h1>
         <form onSubmit={(e) => handleSubmit(e)}>
           <label>
-            <span>Username: </span>
+            <span className="tag is-black">Username: </span>
             <input
               type="text"
               required
@@ -55,7 +55,7 @@ const UserLogin = () => {
             />
           </label>
           <label>
-            <span>Password: </span>
+            <span className="tag is-black">Password: </span>
             <input
               type="text"
               required

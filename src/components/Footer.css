@@ -4,4 +4,9 @@ strong {
 
 .footer {
   background-color: rgb(31, 33, 36);
+  height: 5rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

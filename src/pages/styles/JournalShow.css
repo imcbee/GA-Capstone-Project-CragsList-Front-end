@@ -1,14 +1,23 @@
 .show-page {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; */
 }
-#comment-container {
+.show-comments {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+}
+
+#comment-container {
+  /* position: absolute;
+  bottom: 5em;
+  left: 0px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

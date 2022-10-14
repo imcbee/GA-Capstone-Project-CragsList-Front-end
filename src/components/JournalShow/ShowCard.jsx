@@ -33,7 +33,11 @@ const ShowCard = ({ showData }) => {
     <>
       {showData ? (
         <div className="card">
-          <img src={showData.picture} className="card-img-top" alt="..." />
+          <img
+            src={showData.picture}
+            className="card-img-top"
+            alt="show card"
+          />
           <div className="card-body">
             <div className="showcard-title">
               <h5 className="card-title">

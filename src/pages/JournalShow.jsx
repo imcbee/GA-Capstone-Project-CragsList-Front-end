@@ -33,10 +33,10 @@ const JournalShow = () => {
     <div className="show-page">
       <Navbar />
       {showData ? (
-        <>
+        <div className="show-comments">
           <ShowCard showData={showData} />
           <Comments showData={showData} getShowData={getShowData} />
-        </>
+        </div>
       ) : (
         <h1>loading...</h1>
       )}

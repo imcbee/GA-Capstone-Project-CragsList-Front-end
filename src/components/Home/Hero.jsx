@@ -14,7 +14,7 @@ const Hero = ({ homeData }) => {
       >
         <div className="carousel-inner">
           {homeData
-            ? homeData.map((data, idx) => {
+            ? homeData?.map((data, idx) => {
                 return (
                   <Link to={`/journal/${data._id}`} key={data._id}>
                     <div className="carousel-item active">

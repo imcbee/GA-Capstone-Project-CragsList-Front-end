@@ -1,22 +1,14 @@
-.strong {
-  color: rgb(96, 206, 179);
-}
-
-#comment-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#comment-container {
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.comments-window {
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 70vh;
 }

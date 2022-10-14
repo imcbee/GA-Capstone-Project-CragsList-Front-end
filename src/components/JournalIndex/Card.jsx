@@ -9,7 +9,11 @@ const Card = ({ indexData }) => {
         ? indexData.map((data, idx) => {
             return (
               <div className="card">
-                <img src={data.picture} className="card-img-top" alt="..." />
+                <img
+                  src={data.picture}
+                  className="card-img-top"
+                  alt="index card"
+                />
                 <div className="card-body">
                   <div className="index-title">
                     <h5 className="card-title">{data.name}</h5>
@@ -44,6 +48,7 @@ const Card = ({ indexData }) => {
             );
           })
         : null}
+      <div className="buffer"></div>
     </div>
   );
 };
