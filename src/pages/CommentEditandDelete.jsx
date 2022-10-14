@@ -20,7 +20,7 @@ const CommentEditandDelete = () => {
       const options = {
         method: "DELETE",
       };
-      const response = await fetch(`${DB_URL}/comment/${id}`, options);
+      const response = await fetch(`${DB_URL}/comments/${id}`, options);
       console.log(response);
       const deleteComment = await response.json();
       navigate("/journal");
@@ -71,6 +71,7 @@ const CommentEditandDelete = () => {
       const data = await response.json();
 
       setUpdateComment(data);
+      console.log(navigate);
       navigate(`/journal`);
     } catch (error) {
       console.log(error);
@@ -97,7 +98,7 @@ const CommentEditandDelete = () => {
         </form>
       </div>
       <div className="delete-button">
-        <button onClick={() => handleDelete()} className="btn btn-danger">
+        <button onClick={(e) => handleDelete(e)} className="btn btn-danger">
           Delete
         </button>
       </div>
