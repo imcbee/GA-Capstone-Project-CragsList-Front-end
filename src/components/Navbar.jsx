@@ -1,13 +1,23 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
+import { useState, useEffect, useContext } from "react";
 
 const Navbar = () => {
+  //!  ---------------------------useContext-------------------------------
+  const { DB_URL, getUserToken, handleLogout, currentUser } =
+    useContext(Context);
+
+  //!  ---------------------------useState-------------------------------
+  const [logOutUser, setLogOutUser] = useState();
+
   return (
     <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           CragsList
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -36,31 +46,56 @@ const Navbar = () => {
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+              {currentUser ? (
+                <p>
+                  Hello!{" "}
+                  <span className="tag is-primary is-large">
+                    {currentUser?.username}
+                  </span>
+                </p>
+              ) : (
+                <></>
+              )}
+              {currentUser ? null : (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/user/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/user/register">
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
               <li className="nav-item">
-                <Link className="nav-link" to="/user/login">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/user/register">
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/journal">
+                <Link className="nav-link" to="/journal">
                   Journals
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/journal/new">
-                  Create Journal
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" href="#">
-                  Link
-                </Link>
-              </li>
+              {currentUser ? (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/journal/new">
+                      Create Journal
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/user/login">
+                      <button
+                        onClick={handleLogout}
+                        className="button is-danger"
+                      >
+                        Logout
+                      </button>
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <li>Please login for more!</li>
+              )}
             </ul>
           </div>
         </div>

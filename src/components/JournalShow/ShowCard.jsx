@@ -5,7 +5,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 
 const ShowCard = ({ showData }) => {
   //!  ------------------------useContext------------------------
-  const { DB_URL } = useContext(Context);
+  const { DB_URL, currentUser } = useContext(Context);
 
   //!  ------------------------useNavigate------------------------
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ShowCard = ({ showData }) => {
         `${DB_URL}/journal/${showData._id}`,
         options
       );
-      console.log(response);
+
       const deleteJournal = await response.json();
       navigate("/journal");
     } catch (error) {
@@ -63,18 +63,25 @@ const ShowCard = ({ showData }) => {
               <strong className="strong">Date: </strong>
               {showData.date}
             </p>
-            <div className="buttons">
-              <Link
-                key={showData._id}
-                to={`/journal/${showData._id}/edit`}
-                className="btn btn-primary"
-              >
-                Edit
-              </Link>
-              <button onClick={() => handleDelete()} className="btn btn-danger">
-                Delete
-              </button>
-            </div>
+            {currentUser ? (
+              <div className="buttons">
+                <Link
+                  key={showData._id}
+                  to={`/journal/${showData._id}/edit`}
+                  className="btn btn-primary"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => handleDelete()}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       ) : null}

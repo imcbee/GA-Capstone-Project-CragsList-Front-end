@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../context/Context";
 import { useState, useContext } from "react";
 import Navbar from "../components/Navbar";
@@ -14,18 +14,14 @@ const UserRegister = () => {
   //!  ---------------------------useNavigate-------------------------------
   const navigate = useNavigate();
 
-  //!  ---------------------------useState-------------------------------
-  const [newUser, setNewUser] = useState({
+  //!  ---------------------------useState---------------------------------
+  const initialState = {
     username: "",
     email: "",
     password: "",
     avatar: "",
-  });
-
-  //!  ---------------------------handleChange-------------------------------
-  const handleChange = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
+  const [newUser, setNewUser] = useState(initialState);
 
   //!  ---------------------------handleSubmit-------------------------------
   const handleSubmit = async (e) => {
@@ -33,6 +29,14 @@ const UserRegister = () => {
     try {
       const response = await registerUser(newUser);
       console.log(response);
+
+      if (response) {
+        navigate("/journal");
+      } else {
+        navigate("/");
+      }
+
+      setNewUser(initialState);
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
@@ -40,69 +44,67 @@ const UserRegister = () => {
     }
   };
 
+  //!  ---------------------------handleChange-------------------------------
+  const handleChange = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    console.log(newUser);
+  };
+
   //todo  ---------------------------UserRegister-------------------------------
   return (
     <div className="register-page">
       <Navbar />
-      <h1>User Registration</h1>
-      <form action="">
-        <label>
-          <span>Username</span>
-          <input
-            type="text"
-            required
-            name="username"
-            placeholder="Enter your username"
-            onChange={handleChange}
-            value={newUser.username}
-          />
-        </label>
-        <label>
-          <span>Email</span>
-          <input
-            type="text"
-            required
-            name="email"
-            placeholder="Enter your email"
-            onChange={handleChange}
-            value={newUser.email}
-          />
-        </label>
-        <label>
-          <span>Password</span>
-          <input
-            type="text"
-            required
-            name="password"
-            placeholder="Enter your password"
-            onChange={handleChange}
-            value={newUser.password}
-          />
-        </label>
-        <label>
-          <span>Avatar</span>
-          <input
-            type="text"
-            required
-            name="avatar"
-            placeholder="Enter your avatar"
-            onChange={handleChange}
-            value={newUser.avatar}
-          />
-        </label>
-      </form>
+      <div className="register-form">
+        <h1>User Registration</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>Username: </span>
+            <input
+              type="text"
+              required
+              name="username"
+              placeholder="Enter your username"
+              onChange={handleChange}
+              value={newUser.username}
+            />
+          </label>
+          <label>
+            <span>Email: </span>
+            <input
+              type="text"
+              required
+              name="email"
+              placeholder="Enter your email"
+              onChange={handleChange}
+              value={newUser.email}
+            />
+          </label>
+          <label>
+            <span>Password: </span>
+            <input
+              type="text"
+              required
+              name="password"
+              placeholder="Enter your password"
+              onChange={handleChange}
+              value={newUser.password}
+            />
+          </label>
+          <label>
+            <span>Avatar: </span>
+            <input
+              type="text"
+              required
+              name="avatar"
+              placeholder="Enter your avatar"
+              onChange={handleChange}
+              value={newUser.avatar}
+            />
+          </label>
+          <input type="submit" value="Register" class="button is-primary" />
+        </form>
+      </div>
       <Footer />
-      {/* <Form onSubmit={handleSubmit}>
-        <FloatingLabel label="Username">
-          <Form.Control
-            type="text"
-            placeholder="Username"
-            name="username"
-            onChange={handleChange}
-            value={newUser.username}
-          ></Form.Control>
-        </FloatingLabel>
-      </Form> */}
     </div>
   );
 };

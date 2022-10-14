@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Comments = ({ showData, getShowData }) => {
   console.log(showData);
   //! ------------------------useContext-------------------------------
-  const { DB_URL } = useContext(Context);
+  const { DB_URL, currentUser } = useContext(Context);
 
   //! ------------------------useNavigate-------------------------------
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ const Comments = ({ showData, getShowData }) => {
   const getCommentData = async () => {
     const response = await fetch(`${DB_URL}/comments/`); //! need to figure out to get specific comment
     const data = await response.json();
-    // console.log(data);
     setCommentData(data);
   };
 
@@ -58,25 +57,32 @@ const Comments = ({ showData, getShowData }) => {
   //? -----------------------------handleChange-----------------------------
   const handleChange = (e) => {
     setNewComment({ ...newComment, [e.target.name]: e.target.value });
-    // console.log(newComment);
   };
 
   //todo -----------------------------Comments-----------------------------
   return (
     <>
-      <div className="comment-form">
-        <form onSubmit={CreateComment}>
-          {/* comment */}
-          <label htmlFor="">Comment:</label>
-          <input
-            type="text"
-            name="comments"
-            value={newComment?.comments}
-            onChange={handleChange}
-          />
-          <input type="submit" value="Create Comment" />
-        </form>
-      </div>
+      {currentUser ? (
+        <div className="comment-form">
+          <form onSubmit={CreateComment}>
+            {/* comment */}
+            <label htmlFor="">Comment:</label>
+            <input
+              type="text"
+              name="comments"
+              value={newComment?.comments}
+              onChange={handleChange}
+            />
+            <input
+              type="submit"
+              value="Create Comment"
+              className="button is-primary"
+            />
+          </form>
+        </div>
+      ) : (
+        <></>
+      )}
 
       <div className="container-fluid" id="comment-container">
         {showData

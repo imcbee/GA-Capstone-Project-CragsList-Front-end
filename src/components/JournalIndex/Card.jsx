@@ -35,7 +35,7 @@ const Card = ({ indexData }) => {
                   <Link
                     to={`/journal/${data._id}`}
                     key={data._id}
-                    className="btn btn-primary"
+                    className="button is-primary"
                   >
                     See page
                   </Link>

@@ -17,13 +17,11 @@ const JournalShow = () => {
   const getShowData = async () => {
     const response = await fetch(`${DB_URL}/journal/${id}`);
     const data = await response.json();
-    console.log(data);
     setShowData(data);
   };
 
   //!  ------------------------useParams------------------------
   const { id } = useParams();
-  console.log(id);
 
   //!  ------------------------useEffect-------------------------
   useEffect(() => {

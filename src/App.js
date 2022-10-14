@@ -7,16 +7,13 @@ import JournalIndex from "./pages/JournalIndex";
 import JournalShow from "./pages/JournalShow";
 import UserRegister from "./pages/UserRegister";
 import UserLogin from "./pages/UserLogin";
+import Route404 from "./pages/Route404";
 import CommentCreate from "./pages/CommentCreate";
 import CommentEditandDelete from "./pages/CommentEditandDelete";
 import { Context } from "./context/Context";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  setCurrentUser,
-  clearUserToken,
-  setUserToken,
-} from "./utils/authToken";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { getUserToken, clearUserToken, setUserToken } from "./utils/authToken";
 
 //! ------------------------Backend FETCH URL------------------------
 const DB_URL = "http://localhost:4000";
@@ -42,6 +39,7 @@ function App() {
       console.log(parsedUser);
 
       setUserToken(parsedUser.token);
+      setCurrentUser(parsedUser.currentUser);
       setIsAuthenicated(parsedUser.loggedIn);
 
       return parsedUser;
@@ -67,8 +65,8 @@ function App() {
       const user = await response.json();
 
       setUserToken(user.token);
-      setCurrentUser(user.currentUser);
-      setIsAuthenicated(user.loggedIn);
+      setCurrentUser(user.user);
+      setIsAuthenicated(user.isLoggedIn);
 
       return user;
     } catch (error) {
@@ -76,6 +74,13 @@ function App() {
       clearUserToken();
       setIsAuthenicated(false);
     }
+  };
+
+  //! ---------------------------loginOut--------------------------
+  const handleLogout = () => {
+    clearUserToken();
+    setCurrentUser(null);
+    setIsAuthenicated(false);
   };
 
   //todo ---------------------------App--------------------------
@@ -88,7 +93,10 @@ function App() {
           isAuthenticated,
           registerUser,
           loginUser,
-          currentUser,
+          getUserToken,
+          clearUserToken,
+          setUserToken,
+          handleLogout,
         }}
       >
         <Routes>
@@ -104,8 +112,8 @@ function App() {
           {/* <Route path="/comments/:id/" element={}></Route> */}
           <Route path="/user/login" element={<UserLogin />}></Route>
           <Route path="/user/register" element={<UserRegister />}></Route>
-          {/* <Route path="/user/logout" element={<Navigate to="/auth/login" />}></Route> */}
           {/* <Route path="/user/index" element={}></Route> */}
+          <Route path="/*" element={<Route404 />}></Route>
         </Routes>
       </Context.Provider>
     </div>
